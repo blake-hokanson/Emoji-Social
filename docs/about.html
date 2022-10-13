@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>About | Emoji App</title>
+    </head>
+    <body>
+        <h1>Emoji Social</h1>
+        <p></p>
+        <h2>About</h2>
+        <p>Each day, there will be a prompt, and users will respond with a string of emojis</p>
+        <h3>Our Team:</h3>
+        {% for person in team %}
+            <p>{{ person }}</p>
+        {% endfor %}
+    </body>
+</html>
