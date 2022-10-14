@@ -15,7 +15,9 @@ def about(request):
             "Anirudh Krishna Kumar",
             "Chukwuemeka Ugwu",
             "Thibaut Sacherer",
-            "Sydney Killilea"]
+            "Sydney Killilea",
+            "Will Dvorak"
+            ]
     return render(request, "about.html", {'team':team})
 
 def faq(request):
