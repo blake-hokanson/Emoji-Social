@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FAQ | Emoji App</title>
+    </head>
+    <body>
+        <h1>Emoji Social</h1>
+        <p></p>
+        <h2>FAQ</h2>
+        {% for q in qna %}
+            <h3>{{ q.0 }}</h3>
+            <p>{{ q.1 }}</p>
+        {% endfor %}
+    </body>
+</html>
