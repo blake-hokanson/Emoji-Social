@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='eng'>
+    <head>
+        <title>Post</title>
+    </head>
+    <body>
+        <h1> Prompt: {{prompt.text}} </h1>
+
+        <h2> Responses: </h2>
+        {% for msg in msgs %}
+            <h2>{{msg.user.username}}: {{msg.response}}</h2>
+        {% endfor %}
+        
+        <h1> Respond: </h1>
+        <form action="{% url 'respond' %}" method='respond'>
+            
+            <input type="text" name="text">
+            <input type="submit">
+        </form>
+
+    </body>
+</html>
