@@ -8,12 +8,25 @@
         {% extends "base.html" %}
       
         {% block title %}
-        <h2>Home</h2>
+        <h5>Home</h5>
         {% endblock %}
        
         {% block content %}
-        <p>I made a website</p>
-        <p>There will be stuff here</p>
+        <h1>{{prompt.text}}</h1>
+        <hr>
+        <h4><b>Replies</b></h4>
+        {% for reply in replies %}
+            <p style='margin-bottom:0;'>
+                <strong>{{reply.user.username}}</strong>    <small>{{reply.datetime_posted}}</small>
+            </p>
+            <h3>{{reply.response}}</h3>     
+        {% endfor %}
+
+        <h5>Reply:</h5>
+        <form action="{% url 'respond' %}" method='respond'>
+            <input type="text" name="text">
+            <input type="submit" value="Reply">
+        </form>
         {% endblock %}
     </body>
 </html>

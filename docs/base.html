@@ -12,27 +12,83 @@
         
         <main class="d-flex flex-nowrap">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <a href="admin" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                     <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong>@username</strong>
+                    <strong>{{user}}</strong>
                 </a>
                 <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
+                <ul class="nav nav-pills flex-sm-column">
                     <div class="navbar-nav">
-                        <a class="nav-link" href="{% url 'index' %}"> Home</a>
-                        <a class="nav-link" href="{% url 'about' %}"> About</a>
-                        <a class="nav-link" href="{% url 'faq' %}"> FAQ</a>
-                        <a class="nav-link" href="{% url 'base' %}"> Account</a>
+                        <li class="nav-item">
+                            {% url 'index' as index %}
+                            <a 
+                                class="nav-link"
+                                {% if request.path == index %} 
+                                    style="padding-left:10px; font-weight: bold"
+                                {% else %}
+                                    style="padding-left:10px"
+                                    onmouseover="this.style='padding-left:10px; background-color:#E0E0E0';"
+                                    onmouseout="this.style='padding-left:10px; bg-light';"
+                                    href="{{ index }}" 
+                                {% endif %}>
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {% url 'about' as about %}
+                            <a
+                                class="nav-link"
+                                {% if request.path == about %} 
+                                    style="padding-left:10px; font-weight:bold"
+                                {% else %}
+                                    style="padding-left:10px"
+                                    onmouseover="this.style='padding-left:10px; background-color:#E0E0E0';"
+                                    onmouseout="this.style='padding-left:10px; bg-light';"
+                                    href="{{ about }}" 
+                                {% endif %}>
+                                 About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {% url 'faq' as faq %}
+                            <a 
+                                class="nav-link"
+                                {% if request.path == faq %} 
+                                    style="padding-left:10px; font-weight:bold"
+                                {% else %}
+                                    style="padding-left:10px"
+                                    onmouseover="this.style='padding-left:10px; background-color:#E0E0E0';"
+                                    onmouseout="this.style='padding-left:10px; bg-light';"
+                                    href="{{ faq }}" 
+                                {% endif %}>
+                                 FAQ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {% url 'base' as base %}
+                            <a 
+                                class="nav-link"
+                                {% if request.path == base %} 
+                                    style="padding-left:10px; font-weight:bold"
+                                {% else %}
+                                    style="padding-left:10px"
+                                    onmouseover="this.style='padding-left:10px; background-color:#E0E0E0';"
+                                    onmouseout="this.style='padding-left:10px; bg-light';"
+                                    href="{{ base }}" 
+                                {% endif %}>
+                                Account
+                            </a>
+                        </li>
                       </div>
                 </ul>
             </div>
 
             <div class="b-example-divider b-example-vr"></div>
             
-            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 560px;">
                 {% block title %}
                 {% endblock %}
-
+                <hr>
                 {% block content %}
                 {% endblock %}
             </div>

@@ -1,13 +1,18 @@
+import re
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from Posts import views as posts_views
 # Create your views here.
 
 def base(request):
-    return render(request, "base.html")
+    curr_user = request.user
+    return render(request, "base.html", {'user': curr_user})
 
 def index(request):
-    return render(request, "index.html")
+    return posts_views.index(request)
+
+def respond(request):
+    return posts_views.respond(request)
 
 def about(request):
     team = ["Blake Hokanson",
